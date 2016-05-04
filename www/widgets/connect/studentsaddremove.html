@@ -1,0 +1,82 @@
+<div class="app_container heightfull">
+    <div class="container-fluid heightfull ng-scope">
+        <div class="row table-row heightfull">
+            
+            <nav class="col-sm-2 col-md-2 nav--local" >
+                <course-courseNav></course-courseNav>
+            </nav>
+                
+            <div class="col-sm-21 col-md-21">    
+                <div class="box body--margin col-sm-24">
+                    <div class="box__header">
+                        <h2>
+                            <i class="fa fa-cog "></i>Edit participants
+                        </h2>
+                        <a ng-href="participants/{{ courseUrl }}" class="edit"><i class="fa fa-check done"></i>Back
+                        </a>
+                    </div>
+                    <div class="box__content">
+                        <div class="col-sm-12">
+                            <div class="list--students_options">
+                                <!--<select id="selectCourse" 
+                                        ng-change="selectCourseChanged(id)" 
+                                        ng-model="courseSelect.repeatSelect" 
+                                        name="repeatSelect" 
+                                        class="form-control">
+                                    <option value=""> --- Program list ---</option>
+                                    <option ng-repeat="option in courseSelect.availableOptions" value="{{ option.name }}"> {{ option.name }}
+                                    </option>
+                                </select>-->
+                            </div>
+                            <div class="list--students">
+                                <h3>Add people</h3>
+                                <ul>
+                                    <li ng-init="index=0; 
+                                        classes=['list--students_item', 'list--students_item--active']" 
+                                         ng-click="stageMeToCourse($index)" 
+                                         ng-class="classes[index % classes.length]" 
+                                         ng-repeat="student in students"  
+                                         class="col-xs-24">
+
+                                        <img src="/img/profile_default.png">
+                                        <h4>
+                                            {{ student.first_name }} {{ student.last_name }} 
+                                            <span class="role">{{ student.role }}</span>
+                                            <i class="fa fa-chevron-right"></i>
+                                        </h4>
+                                        <p class="student_nr">{{ student._id }}</p>
+                                    </li>
+                                </ul>
+                            </div><!--list-students-->
+                        </div><!--.col-->
+
+                        <div class="col-sm-12">
+                            <div class="list--students list--students--added">
+                                <h3>Participants in The course name {{ course.name }}</h3>
+                                <ul>
+                                    <li ng-init="index=0; classes=['list--students_item--added', 
+                                                                    'list--students_item--active']" 
+                                         ng-click="unstageMeToCourse($index)" 
+                                         ng-class="classes[index % classes.length]" 
+                                         ng-repeat="student in studentsToBeAdded" 
+                                         class="col-xs-24 studlist_card">
+
+
+                                        <img src="/img/profile_default.png" alt="profile picture of {{ student.first_name }}">
+                                        <h4>
+                                            <span class="role">{{ student.role }}</span>
+                                            {{ student.first_name }} {{ student.last_name }} 
+                                            <i class="fa fa-chevron-left"></i>
+                                        </h4>
+                                        <p class="student_nr">{{ student._id }}</p>
+                                    </li>
+                                </ul>
+                            </div><!--.list--students-->
+                        </div><!--.col-->
+                    </div><!--.box-content -->
+                </div><!--.box .col-->
+            </div><!--.col-->
+        
+        </div> <!--.row-->
+    </div><!--.container -->
+</div><!--.app_container-->

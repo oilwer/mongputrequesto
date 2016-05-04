@@ -1,0 +1,210 @@
+input[type="datetime-local"].form-control{
+    padding-right: 30px;
+}
+
+.stepsthree {
+    li {
+        width: 33.333333333%;
+    }
+    .nav--process_line {
+        left: 16.666666667%;
+        width: 66.666666666%;
+    }
+}
+
+.stepsfour {
+    li {
+        width: 25%;
+    }
+    .nav--process_line {
+        left: 12.5%;
+        width: 75%;
+    }
+}
+.stepsfive {
+    li {
+        width: 20%;
+    }
+    .nav--process_line {
+        left: 10%;
+        width: 80%;
+    }
+}
+
+.checked:before {
+    content: "";
+    position: absolute;
+    top: 23px;
+    left: 50%;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+    width: 100%;
+    height: 6px;
+    background: @RGBcourses;
+    -webkit-animation: transformChecked 0.5s; /* Chrome, Safari, Opera */
+    animation: transformChecked 0.5s;
+}
+
+@-webkit-keyframes transformChecked {
+    from {width: 0%;}
+    to {width: 100%;}
+}
+@keyframes transformChecked {
+    from {width: 0%;}
+    to {width: 100%;}
+}
+
+.nav--process_line {
+   content: "";
+   position: absolute;
+   top: 47px;
+   height: 2px;
+   background: @LMSlight;
+}
+
+.nav--process {
+    position: relative;
+    padding: 20px 0px 90px 0px;
+    height: 90px;
+    font-family: 'Roboto';
+    z-index: 10;
+    margin-bottom: 40px;
+
+   a {
+       text-decoration: none;
+   }
+   li {
+       position: relative;
+       vertical-align: text-top;
+       display: inline-block;
+       height: 90px;
+       text-align: center;
+   }
+
+   .active .step, .checked .step {
+       border: 2px solid @RGBcourses;
+       color: @RGBcourses;
+   }
+
+   .active .stepLabel, .checked .stepLabel {
+       color: @RGBcourses;
+   }
+
+   .step {
+       position: relative;
+       width: 55px;
+       height: 55px;
+       margin: auto;
+       z-index: 10;
+       margin-bottom: 7px;
+       display: block;
+       line-height: 2.5;
+       font-size: 1.5em;
+       border: 2px solid @LMSlight;
+       background-color: #fff;
+       border-radius: 50%;
+       text-align: center;
+   }
+
+   .stepLabel {
+       position: relative;
+       display: block;
+       height: 20px;
+       font-size: 0.8em;
+       text-transform: uppercase;
+   }
+   a {
+       color: @LMSlight;
+       display: inline-block;
+       &:hover {text-decoration: none;}
+   }
+}
+
+.stepicon
+{
+       position: relative;
+       width: 75px;
+       height: 75px;
+       margin: auto;
+       z-index: 10;
+       margin-bottom: 7px;
+       display: block;
+       line-height: 3.5;
+       font-size: 1.5em;
+       background-color: @RGBassignments;
+       border-radius: 50%;
+       text-align: center;
+
+       border: 2px solid white;
+	   color: white;
+}
+
+.stepicon--courses {
+    background-color: @RGBcourses;
+    &:hover {
+        border: 2px solid @RGBcourses !important;
+	   color: @RGBcourses !important;
+    }
+}
+
+.stepicon:hover
+{
+	background-color: white;
+	border: 2px solid @RGBassignments;
+	color: @RGBassignments;
+
+}
+
+.processselector
+{
+    margin-top: 40px;
+	width:50%;
+	float:left;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.nav--process--assignments {
+    .checked:before {
+   background: @RGBassignments;
+}
+
+   .active .stepLabel, .checked .stepLabel {
+       color: @RGBassignments;
+   }
+
+   .active .step, .checked .step {
+       border: 2px solid @RGBassignments;
+       color: @RGBassignments;
+   }
+}
+
+.process_view {
+   .pager {
+       padding: 40px 0px;
+       .btn {
+           margin: 0px 10px;
+       }
+   }
+}
+
+.processview_preview {
+
+}
+
+.myCheckbox label {
+
+    font-size: 1em;
+    margin-right: 5%;
+}
+
+input[type=checkbox] {
+    transform: scale(1.2);
+    margin-right: 5%;
+}
+
+.upload_instruction_file form {
+
+    margin-top: 5%;
+}

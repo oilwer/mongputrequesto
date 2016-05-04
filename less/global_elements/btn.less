@@ -1,0 +1,77 @@
+.btn--assignments {
+    background: @RGBassignments;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+        background: fade(@RGBassignments,85%);
+        transition: all 0.3s ease-in-out;
+    }
+    &:active, &:focus {
+        outline: none;
+    }
+}
+
+.btn--courses {
+    background: @RGBcourses;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+        background: fade(@RGBcourses,85%);
+        transition: all 0.3s ease-in-out;
+    }
+    &:active, &:focus {
+        outline: none;
+    }
+}
+
+.btn--users {
+    background: @RGBskills;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+        background: fade(@RGBskills,85%);
+        transition: all 0.3s ease-in-out;
+    }
+    &:active, &:focus {
+        outline: none;
+    }
+}
+
+.assignmentList .btn {
+    margin-left: 20px;
+}
+
+.btn {
+    margin: 5px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.btn--back {
+    float: left;
+    margin: 10px 0px;
+}
+
+.btndisabled {
+    background: fade(@LMSlight,30%) !important;
+    color: fade(@LMSlight,50%) !important;
+    &:hover {
+        cursor: not-allowed !important;
+    }
+}
+.btn-default--assignment{
+    background-color: @RGBassignments !important;
+    border:none;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+        background-color: fade(@RGBassignments,85%) !important;
+        transition: all 0.3s ease-in-out;
+    }
+    &:active, &:focus {
+        outline: none;
+    }
+}
+
+.send__button {
+    float:right;
+    margin: 10px 0px 0px 10px;
+}

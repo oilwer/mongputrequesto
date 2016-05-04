@@ -1,0 +1,182 @@
+    <div class="row--modal">
+        <div class="col-sm-16 col-sm-offset-4">
+            <ul class="col-sm-24 nav--process" ng-class="{stepsthree: isCopying == 0, stepsfour: isCopying == 1}">
+                <div class="nav--process_line"></div>
+
+                <li ng-if="isCopying == 1" ng-repeat="step in createsteps" ng-class="{active: $index==getCurrentStepIndex(), checked: $index < getCurrentStepIndex()}">
+                  <a href="javascript:void(0)" ng-click="goToStep($index)">
+                    <span class="step"><i class=" fa {{step.icon}}"></i></span>
+                                  <span class="stepLabel">{{step.name}}</span>
+                  </a>
+                </li>
+
+                <li ng-if="isCopying == 0" ng-repeat="step in steps" ng-class="{active: $index==getCurrentStepIndex(), checked: $index < getCurrentStepIndex()}">
+                    <a href="javascript:void(0)" ng-click="goToStep($index)">
+                    <span class="step"><i class=" fa {{step.icon}}"></i></span>
+                            <span class="stepLabel">{{step.name}}</span>
+                  </a>
+                </li>
+
+              </ul>
+            <div class="process_view" ng-switch on="selection">
+
+              <div class="stepOne" ng-switch-when="Create or copy">
+                <div class="col-sm-14 col-sm-offset-5">
+                  <form name="assignmentType">
+                    <div class="processselector" ng-click="setCreate()">
+                      <span class="step stepicon stepicon--courses"><i class=" fa fa-file-text-o"></i></span>
+                              <span class="stepLabel">Create course</span>
+                    </div>
+                    <div class="processselector" ng-click="setCopy()">
+                      <span class="step stepicon stepicon--courses"><i class=" fa glyphicon glyphicon-pencil"></i></span>
+                              <span class="stepLabel">Create course from older course</span>
+                    </div>
+                  </form>
+                </div>
+              </div> <!--.StepOne-->
+
+              <div class="stepFour" ng-switch-when="Select course">
+                <div class="col-sm-24">
+                  <form name="courseDetails">
+                    <div class="select_course_header"><label for="selectCourse">Select course to copy</label></div>
+                    <select id="selectCourse"
+                                ng-change="selectCourseChanged(id)"
+                                ng-model="courseSelect.repeatSelect"
+                              required="required"
+                                name="repeatSelect"
+                                class="form-control">
+                      <option value=""> --- Available courses ---</option>
+                      <option ng-repeat="option in courseSelect.availableOptions" value="{{ option.name }}">{{ option.name }}
+                      </option>
+                    </select>
+                  </form>
+                </div>
+                <div class="col-xs-24 pager">
+                    <button class="btn btn--courses" ng-click="decrementStep()">&larr; Previous</button>
+                    <button class="btn btn--courses" ng-class="{btndisabled: courseDetails.$invalid}" ng-click="courseDetails.$valid && loadDetails()">Next step &rarr;</button>
+                </div>
+              </div> <!--End of step four-->
+
+
+
+            <!--
+            <div class="stepOne" ng-switch-when="Create or copy">
+                <div class="col-sm-14 col-sm-offset-5">
+                <form name="courseType">
+                    <button ng-click="goToStep(1)">Create new course</button>
+                    <button ng-click="isCoursesOpen = !isCoursesOpen">Copy Course</button>
+                    <div class="getCourses" ng-show="isCoursesOpen">
+                        <p>Placeholder: copy course</p>
+                    </div>
+                </form>
+                </div>
+                <ul class="col-xs-24 pager">
+                    <li class="">
+                        <button ng-click="closeModalSession()" class="btn btn-default">Close</button>
+                    </li>
+                </ul>
+            </div> <!--.StepOne-->
+
+
+
+
+                <div class="stepTwo" ng-switch-when="Details">
+                    <div class="col-sm-24">
+                    <form name="courseDetails">
+                        <div class="col-sm-12">
+
+                        <label for="courseName">Course name</label>
+                            <input type="text" name="courseName" class="form-control" ng-model="$parent.course.name" required="true">
+                            <span
+                            class="error"
+                            ng-show="courseDetails.courseName.$touched && courseDetails.courseName.$invalid"
+                            class="formError">
+                            <i class="fa fa-times"></i>
+                            </span>
+
+                        <label for="courseCode">Course code</label>
+                            <input type="text" name="courseCode" class="form-control" ng-model="$parent.course.code" required="true">
+                            <span
+                            class="error"
+                            ng-show="courseDetails.courseCode.$touched && courseDetails.courseCode.$invalid"
+                            class="formError">
+                            <i class="fa fa-times"></i>
+                            </span>
+
+                        <label for="courseUrl">Course url</label>
+                            <input type="text" name="courseUrl" class="form-control" ng-model="$parent.course.url" required="true">
+                            <span
+                            class="error"
+                            ng-show="courseDetails.courseUrl.$touched && courseDetails.courseUrl.$invalid"
+                            class="formError">
+                            <i class="fa fa-times"></i>
+                            </span>
+
+                        </div>
+
+                        <div class="col-sm-12">
+
+                            <label for="courseStart">Start date</label>
+                            <input type="date" name="courseStart" class="form-control" ng-model="$parent.course.start" required="true">
+                            <span
+                            class="error"
+                            ng-show="courseDetails.courseStart.$touched && courseDetails.courseStart.$invalid"
+                            class="formError">
+                            <i class="fa fa-times"></i>
+                            </span>
+
+                            <label for="courseEnd">End date</label>
+                            <input type="date" name="courseEnd" class="form-control" ng-model="$parent.course.end" required="true">
+                            <span
+                            class="error"
+                            ng-show="courseDetails.courseEnd.$touched && courseDetails.courseEnd.$invalid"
+                            class="formError">
+                            <i class="fa fa-times"></i>
+                            </span>
+
+                        </div>
+                        <div class="col-sm-24">
+
+                            <label for="courseDescription">Description</label>
+                            <input type="text" name="courseDescription" class="form-control" ng-model="$parent.course.description" required="true">
+                            <span
+                            class="error"
+                            ng-show="courseDetails.courseDescription.$touched && courseDetails.courseDescription.$invalid"
+                            class="formError">
+                            <i class="fa fa-times"></i>
+                            </span>
+
+
+                            <p> <b> Remember that you need to connect your Slack account before you create a course.
+                            <br/> Head over to <a href="/myprofile"> your profile </a> to connect Slack! </b> </p>
+
+                        </div>
+                    </form>
+                    </div>
+                    <div class="col-xs-24 pager">
+                        <button class="btn btn--courses" ng-click="decrementStep()">&larr; Previous</button>
+                        <button class="btn btn--courses" ng-click="closeModalSession()" class="btn btn-default">Close</button>
+                        <button class="btn btn--courses" ng-class="{btndisabled: courseDetails.$invalid}" ng-click="courseDetails.$valid && addOrUpdateCourse()">{{ $parent.btnAddOrUpdate }} &rarr;</button>
+                    </div>
+            </div><!--.stepTwo-->
+            <div class="stepTree" ng-switch-when="Preview">
+                <div class="col-sm-24">
+                <p>Name: {{course.name}}</p>
+                <p>Course code: {{course.code}}</p>
+                <p>Description: {{course.description}}</p>
+                <p>Period: {{course.start | date }} - {{course.end | date }}</p>
+
+                <p>Url: {{course.url}}</p>
+                <p>ID: {{course._id}}</p>
+
+
+                </div>
+                <div class="col-xs-24 pager">
+                    <button class="btn btn--courses" ng-click="decrementStep()">&larr; Edit details</a>
+                    <button class="btn btn--courses" ng-click="closeModalSession()">Close</button>
+                    <button class="btn btn--courses" ng-click="pathLocation()">Enter course page</button>
+                </div>
+            </div><!--.stepTree-->
+            </div>
+        </div><!--col-->
+    </div><!--.row-->

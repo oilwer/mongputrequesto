@@ -1,0 +1,76 @@
+<section class="box assignment col-lg-24">
+    <div class="assignment-meta">
+        <h2>{{assignment.name}}</h2>
+        <ul>
+            <li><em>Deadline: </em>{{assignment.due_date | date:"MMMM d, y  'at' HH:mm"}}</li>
+            <li><em>Obligatory:</em> {{assignment.obligatory}}</li>
+        </ul>
+        <ul>
+            <li><em> Published:</em> {{assignment.added_on | date:"MMMM d, y 'at' HH:mm"}} </li>
+            <li><em>by: </em>{{teacher}}</li>
+        </ul>
+        <button class="btn btn--assignments toggleClass" ng-click="toggleDescription()">{{showHideBtn}} <i ng-show="isDescriptionOpen" class="fa fa fa-angle-up"></i><i ng-hide="isDescriptionOpen" class="fa fa fa-angle-down"></i></button>
+        <!--<button class="btn btn--assignments toggleClass" ng-show="default" ng-click="toggleSubmit()">{{showHideSubmit}} <i ng-show="noAnswer" class="fa fa fa-angle-up"></i><i ng-hide="noAnswer" class="fa fa fa-angle-down"></i></button>-->
+        <div class="assignment_description animate-show" ng-show="isDescriptionOpen">
+
+        </div>
+
+    </div><!--.assignment_meta-->
+</section><!--.box .assignment-->
+
+<!--SUBMIT ANSWER-->
+<!--<section ng-show="noAnswer" class="box assignment assignment-answer col-lg-24 animate-show">-->
+<section class="box assignment assignment-answer col-lg-24 animate-show" ng-hide="hasAnswered">
+    <h2>Submit your answer</h2>
+    <!--.input-group<div class="input-group btn--fileupload">
+        <span class="input-group-btn">
+            <span class="btn btn-default btn-file btn-default--assignment"><i class="fa fa-folder-open" aria-hidden="true"></i>
+
+
+            </span>
+        </span>
+        <input type="text" ng-model="output" class="output" readonly> <i class="fa fa-times-circle" ng-click="emptyInput()" aria-hidden="true"></i>
+    </div>-->
+
+     <!-- FILE UPLOAD MODULE -->
+        <fileupload-fileupload></fileupload-fileupload>
+
+    <!--Texteditor-->
+    <form>
+         <input id="assignmentStudEditor" type="hidden" ng-model="userType" name="content">
+         <trix-editor input="assignmentStudEditor" ></trix-editor>
+    </form>
+
+        <button ng-click="sendAssignment()" type="submit" class="btn btn-success send__button">SUBMIT ASSIGNMENT</button>
+</section>
+
+<!--If assignment has been answered-->
+<section ng-show="hasAnswered" class="box assignment assignment-answer col-lg-24 animate-show">
+
+    <h2>Submission</h2>
+
+        <ul class="assignment-isAnswered" ng-if="hasAnswered" ng-show="hasAnswered">
+            <li><em>Status: </em>{{status}}</li>
+            <li ng-show="assignmentFeedback.answeredByName != undefined"><em>Graded by: </em> {{assignmentFeedback.answeredByName}} </li>
+        </ul>
+        <hr>
+
+        <div class="assignment--feedback col-lg-24" ng-show="hasFeedback">
+        <h3>Feedback</h3>
+        <div class="assignment-hasFeedback">
+        </div>  <!--.assignment-isAnswered-->
+    </div><!--.col-lg-12-->
+    <div class="col-lg-24">
+        <h3>Your submission</h3>
+        <div class="assignment-isAnswered">
+            <p></p>
+            <div class="submittedFile"></div>
+            <button class="btn btn--assignments toggleClass" ng-click="toggleUpdateAssignmentModal()" ng-hide="isDone">Edit submission <i ng-show="isEditOpen" class="fa fa fa-angle-up"></i><i ng-hide="isEditOpen" class="fa fa fa-angle-down"></i></button>
+        </div>  <!--.assignment-isAnswered-->
+    </div><!--.col-lg-12-->
+</section>
+
+
+<modal-dialog show='updateAssignmentModalShown' width='80%'>
+    <div assignment-update-editassignment></div>
+</modal-dialog>

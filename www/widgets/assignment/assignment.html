@@ -1,0 +1,17 @@
+<div class="app_container heightfull">
+    <div class="container-fluid heightfull ng-scope">
+        <div class="row table-row newtable-row heightfull">
+            
+            <nav class="col-sm-2 col-md-2 nav--local" >
+                <course-courseNav></course-courseNav>
+            </nav>
+            
+            <div class="col-sm-22 col-md-22">
+                <breadcrumbs-breadcrumbs></breadcrumbs-breadcrumbs>
+                <assignment-assignmentstudent ng-if="userView"></assignment-assignmentstudent>
+                <assignment-assignmentteacher ng-if="teacherView"></assignment-assignmentteacher>
+            </div><!--.col-->
+            
+       </div><!--.row-->
+    </div><!--.container-->
+</div><!--.app_container-->

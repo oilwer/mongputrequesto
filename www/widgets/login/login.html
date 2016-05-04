@@ -1,0 +1,19 @@
+<!-- public/views/login.html -->
+<div class="container-fluid login">
+    <div class="row heightfull">
+        <div class="col-sm-12 col-sm-offset-6 col-md-12 col-md-offset-6 col-lg-12 col-lg-offset-6 heightfull">
+            <div class="container__flexcenter">
+                <div class="form--login text-center">
+                    <!--<div class="maskot"><img src="img/maskot.png"></div>-->
+                    <h1><img src="/img/logotype/leargning-made-simple-logotype--dark.png"></h1>
+                    <form>
+                        <input class="form-control" type="text" ng-model="email" placeholder="Email">  
+                        <input class="form-control" type="password" ng-model="password" placeholder="Password"> <input class="button" type="submit" value="Log in" ng-click="loginFunc()">
+                        <a ng-click="forgotPassword()">Reset password</a>
+                        <p ng-Class="class">{{errorMsg}}</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div><!---.row-->
+</div><!---container-->
